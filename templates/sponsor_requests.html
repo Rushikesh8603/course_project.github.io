@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Requests</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='sponsor_request.css') }}">
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1 style="color: rgb(255, 255, 255);">Requests from Influencers</h1>
+            <nav>
+                <a href="/shome/">Profile</a>
+                <a href="/campaign">Campaigns</a>
+                <a href="influencer_requests">requested</a>
+                <form action="{{ url_for('search_influencers') }}" method="GET" style="display: inline;">
+                    <input type="text" name="query" placeholder="Search Influencers" required>
+                    <button type="submit">Search</button>
+                </form>
+                <a href="/logout">Logout</a>
+            </nav>
+        </header>
+        <main>
+            <section class="requests">
+                <h2>Pending Requests</h2>
+                {% for r in pending_requests %}
+                <div class="request">
+                    <div class="request-details">
+                        <div class="detail">
+                            <span id="R">Title:</span>
+                            <span>{{ r.title }}</span>
+                        </div>
+                        <div class="detail">
+                            <span id="R">Description:</span>
+                            <span>{{ r.description }}</span>
+                        </div>
+                        <div class="detail">
+                            <span id="R">Niche:</span>
+                            <span>{{ r.niche }}</span>
+                        </div>
+                        <div class="detail">
+                            <span id="R">Date:</span>
+                            <span>{{ r.date }}</span>
+                        </div>
+                    </div>
+                    <div class="request-actions">
+                        <a href="{{ url_for('update_request_status', request_id=r.id, status='Accepted') }}" class="view-btn">accept</a>
+                        <a href="{{ url_for('update_request_status', request_id=r.id, status='Rejected') }}" class="delete-btn">Reject</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </section>
+            <section class="accepted-requests">
+                <b><h2 style="color: rgb(34, 206, 3);">Accepted</h2></b>
+                {% for r in accepted_requests %}
+                <div class="request">
+                    <div class="request-details">
+                        <div class="detail">
+                            <span id="R">Title:</span>
+                            <span>{{ r.title }}</span>
+                        </div>
+                        <div class="detail">
+                            <span id="R">Description:</span>
+                            <span>{{ r.description }}</span>
+                        </div>
+                        <div class="detail">
+                            <span id="R">Niche:</span>
+                            <span>{{ r.niche }}</span>
+                        </div>
+                        <div class="detail">
+                            <span id="R">Date:</span>
+                            <span>{{ r.date }}</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </section>
+            <section class="rejected-requests">
+                <h2 style="color: red;">Rejected </h2>
+                {% for r in rejected_requests %}
+                <div class="request">
+                    <div class="request-details">
+                        <div class="detail">
+                            <span id="R">Title:</span>
+                            <span>{{ r.title }}</span>
+                        </div>
+                        <div class="detail">
+                            <span id="R">Description:</span>
+                            <span>{{ r.description }}</span>
+                        </div>
+                        <div class="detail">
+                            <span id="R">Niche:</span>
+                            <span>{{ r.niche }}</span>
+                        </div>
+                        <div class="detail">
+                            <span id="R">Date:</span>
+                            <span>{{ r.date }}</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </section>
+        </main>
+    </div>
+</body>
+</html>

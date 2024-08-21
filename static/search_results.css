@@ -1,0 +1,143 @@
+/* Existing styles */
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 0;
+    margin-top: 40px;
+    background: linear-gradient(270deg, #ff6b6b, #f06595, #cc5de8, #845ef7, #5c7cfa, #4dabf7, #22b8cf, #20c997, #51cf66, #94d82d, #fcc419, #ff922b, #ff6b6b);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.dashboard {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+
+.welcome {
+    margin-bottom: 20px;
+}
+
+.campaign, .influencer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.campaign-details, .influencer-details {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.campaign-details .detail, .influencer-details .detail {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.campaign-details .detail span, .influencer-details .detail span {
+    margin-right: 10px;
+}
+
+.campaign-actions, .influencer-actions {
+    display: flex;
+    align-items: center;
+}
+
+button, .delete-btn, .view-btn, .accept-btn, .reject-btn {
+    display: inline-block;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, .delete-btn:hover, .view-btn:hover, .accept-btn:hover, .reject-btn:hover {
+    background-color: #ccc;
+}
+
+.delete-btn {
+    background-color: #f44336; /* Red background color */
+    color: white;
+}
+
+.view-btn {
+    background-color: #ffa500; /* Orange view button */
+    color: white;
+}
+
+.accept-btn {
+    background-color: #4CAF50; /* Green accept button */
+    color: white;
+}
+
+.reject-btn {
+    background-color: #f44336; /* Red reject button */
+    color: white;
+}
+
+#R {
+    font-family: Arial, sans-serif; /* Choose a readable font */
+    font-size: 18px; /* Increase the text size */
+    font-weight: bold; /* Make the text bold */
+    color: #333; /* Set a good color for text */
+    line-height: 1.5; /* Adjust line height for readability */
+    text-align: center; /* Center align text */
+    /* Additional styling */
+}

@@ -1,0 +1,113 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>Admin Dashboard</h1>
+            <nav>
+                <a href="/">Logout</a>
+            </nav>
+        </header>
+        <main>
+            <section class="welcome">
+                <h2>Welcome, {{admin_name}}</h2>
+            </section>
+            <section>
+                <h2>Campaign Details</h2>
+                {% for campaign in campaigns %}
+                <div class="campaign">
+                    <div class="campaign-details">
+                        <div class="detail">
+                            <span>Title:</span> <span>{{ campaign.title }}</span>
+                        </div>
+                        <div class="detail">
+                            <span>Description:</span> <span>{{ campaign.description }}</span>
+                        </div>
+                        <div class="detail">
+                            <span>Niche:</span> <span>{{ campaign.niche }}</span>
+                        </div>
+                        <div class="detail">
+                            <span>Date:</span> <span>{{ campaign.date }}</span>
+                        </div>
+                        <div class="detail">
+                            <span>Created by:</span> <span>{{ campaign.sponsor.username }}</span>
+                        </div>
+                    </div>
+
+                    <div class="campaign-actions">
+                        <a href="{{ url_for('delete_user', id=campaign.id) }}" class="delete-btn">Delete</a> 
+                        <a href="{{ url_for('edit_campaign', campaign_id=campaign.id) }}" class="view-btn">Update</a>                     
+                    </div>
+
+                    
+                </div>
+                {% endfor %}
+            </section>
+            <section>
+                <h2>Influencer Details</h2>
+                {% for influencer in influencers %}
+                <div class="request">
+                    <div class="request-details">
+                        <div class="detail">
+                            <span>Category:</span> <span>{{ influencer.category }}</span>
+                        </div>
+                        <div class="detail">
+                            <span>Niche:</span> <span>{{ influencer.niche }}</span>
+                        </div>
+                        <div class="detail">
+                            <span>Reach:</span> <span>{{ influencer.reach }}</span>
+                        </div>
+                        <div class="detail">
+                            <span>User:</span> <span>{{ influencer.user.username }}</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </section>
+            <section>
+                <h2>Accepted Requests</h2>
+                {% for request in accepted_requests %}
+                <div class="request">
+                    <div class="request-details">
+                        <div class="detail">
+                            <span>Title:</span> <span>{{ request.title }}</span>
+                        </div>
+                        <div class="detail">
+                            <span>Description:</span> <span>{{ request.description }}</span>
+                        </div>
+                        <div class="detail">
+                            <span>Niche:</span> <span>{{ request.niche }}</span>
+                        </div>
+                        <div class="detail">
+                            <span>Date:</span> <span>{{ request.date }}</span>
+                        </div>
+                        <div class="detail">
+                            <span>Requested by:</span> <span>{{ request.user.username }}</span>
+                        </div>
+                        <div class="detail">
+                            <span>Status:</span> <span>{{ request.status }}</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </section>
+        </main>
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="flash {{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>

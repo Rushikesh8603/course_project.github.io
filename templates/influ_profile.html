@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='influ_profile.css') }}">>
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>Influencer's Profile</h1>
+            <nav>
+                <a href="influ_profile">Profile</a>
+                <a href="/active_campain">Active Campaigns</a>
+                <form action="{{ url_for('search_campaign') }}" method="GET" style="display: inline;">
+                    <input type="text" name="query" placeholder="Search Campaigns" required>
+                    <button type="submit">Search</button>
+                </form>
+                <a href="/">Logout</a>
+            </nav>
+        </header>
+        <main>
+            <section class="welcome">
+                <h2>Welcome !!</h2>
+                <div class="profile-page">
+                    <h2 class="profile-name"><b style="color: rgb(76, 16, 205);"><span style=" text-decoration: underline wavy rgb(234, 12, 19) 4px; color: rgb(37, 0, 247);">{{ user.username }}</span></b></h2>
+                    <h3 class="profile-role">{{Profile.role}}</h3>
+                    <p class="profile-ranking">RANKINGS :- {{Profile.reach}}k</p>
+                    <div class="profile-details-frame">
+                        <div class="profile-details">
+                            <div class="detail">
+                                <span class="detail-title">username:</span>
+                                <span class="detail-value">{{user.username}}</span>
+                            </div>
+                            <div class="detail">
+                                <span class="detail-title">category:</span>
+                                <span class="detail-value">{{Profile.category}}</span>
+                            </div>
+                            <div class="detail">
+                                <span class="detail-title">niche:</span>
+                                <span class="detail-value">{{Profile.niche}}</span>
+                            </div>
+                            <div class="detail">
+                                <span class="detail-title">reach:</span>
+                                <span class="detail-value">{{Profile.reach}}<b>K</b></span>
+                            </div>
+                            <div class="detail">
+                                <span class="detail-title">role:</span>
+                                <span class="detail-value">{{Profile.role}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='search_results.css') }}">
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>Sponsor Dashboard</h1>
+            <nav>
+                <a href="/shome/">Profile</a>
+                <a href="/campaign">Campaigns</a>
+                <a href="#">Find</a>
+                <form action="{{ url_for('search_influencers') }}" method="GET" style="display: inline;">
+                    <input type="text" name="query" placeholder="Search Influencers" required>
+                    <button type="submit">Search</button>
+                </form>
+                <a href="/logout">Logout</a>
+            </nav>
+        </header>
+        <main>
+            <section class="welcome">
+                <h2>Search Results for "<b style="color: rgb(76, 16, 205);">{{ query }}</b>"</h2>
+                {% if results %}
+                <div class="search-results">
+                    {% for influencer in results %}
+                    <div class="influencer">
+                        <div class="influencer-details">
+                            <div class="detail">
+                                <span id="R">Name:</span>
+                                <span>{{query}}</span>
+                            </div>
+                            <div class="detail">
+                                <span id="R">Category:</span>
+                                <span>{{ influencer.category }}</span>
+                            </div>
+                            <div class="detail">
+                                <span id="R">Niche:</span>
+                                <span>{{ influencer.niche }}</span>
+                            </div>
+                            <div class="detail">
+                                <span id="R">Reach:</span>
+                                <span>{{ influencer.reach }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p>No influencers found matching "{{ query }}"</p>
+                {% endif %}
+            </section>
+        </main>
+    </div>
+</body>
+</html>

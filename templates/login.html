@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <form action="/" method="post">
+            <h2>User Login or Admin login</h2>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter Username" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter Password" required>
+            </div>
+            <div class="form-group">
+            </div>
+
+            <button type="submit">Login</button>
+
+            <p id="R"> <b>influencersignUp ?</b></p>
+            <a id = "R" href="/signup/">signUp</a>
+
+            <p id="R"> <b>sponsorsignUp ?</b></p>
+            <a id = "R" href="/Sponsorsignup/">signUp</a>
+
+
+        </form>   
+        {% if error %}
+        <p id = "R" style="color: red;">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

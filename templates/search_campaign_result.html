@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='active_campin.css') }}">
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>Influencer's Dashboard</h1>
+            <nav>
+                <a href="/influ_profile">Profile</a>
+                <a href="/active_campain">active_campains</a>
+                <a href="/">Logout</a>
+            </nav>
+        </header>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="flash {{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+        <main>
+            <section class="welcome">
+                <h2>Active Campaigns</h2>
+                {% for c in Campaigns %}
+                <div class="campaign">
+                    <div class="campaign-details">
+                        <div class="detail">
+                            <span id="R">Title:</span>
+                            <span>{{ c.title }}</span>
+                        </div>
+                        <div class="detail">
+                            <span id="R">Description:</span>
+                            <span>{{ c.description }}</span>
+                        </div>
+                        <div class="detail">
+                            <span id="R">Niche:</span>
+                            <span>{{ c.niche }}</span>
+                        </div>
+                        <div class="detail">
+                            <span id="R">Date:</span>
+                            <span>{{ c.date }}</span>
+                        </div>
+                    </div>
+                    <div class="campaign-actions">
+                        <a href="{{ url_for('delete_user', id=c.id) }}" class="delete-btn">Reject</a>
+                        <a href="{{ url_for('request_for_Sponsor', campaign_id=c.id) }}" class="view-btn">Request</a>
+                    </div>
+                    
+                </div>
+                {% endfor %}
+            </section>
+        </main>
+    </div>
+</body>
+</html>

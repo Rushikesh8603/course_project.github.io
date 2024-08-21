@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='sponsorSignup.css') }}">
+</head>
+<body>
+    <div class="signin-container">
+        <form action="/Sponsorsignup/"  method ="post" class="signin-form">
+            <h2>{{title}}</h2>
+            <div class="input-group">
+                <label for="username">Email or Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Conform Password</label>
+                <input type="password" id="conformpass" name="conformpass" required>
+            </div>
+
+            <button id = "R" type="submit" class="signin-btn">Sign In</button>
+        </form>
+        {% if error %}
+        <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        <p id = "R">Already have an account? <a href="/">Login here</a></p>
+    </div>
+</body>
+</html>
+
+
+
